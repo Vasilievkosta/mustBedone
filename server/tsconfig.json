@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",              // Современный JavaScript
+    "module": "CommonJS",            // Подходит для Node.js
+    "rootDir": "./",                 // Исходники в корне
+    "outDir": "./dist",              // Компилированные файлы идут в dist/
+    "strict": true,                  // Включает строгую типизацию
+    "esModuleInterop": true,         // Позволяет использовать import из CommonJS
+    "skipLibCheck": true             // Пропускает проверку типов в node_modules
+  },
+  "include": ["./**/*.ts"]           // Включает все .ts файлы в проекте
+}

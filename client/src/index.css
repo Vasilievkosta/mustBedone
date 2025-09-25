@@ -1,0 +1,42 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 40px);
+}
+
+.main-layout {
+  display: flex;
+  flex: 1;
+}
+
+header {
+  background-color: #f5f5dc;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #d3d3d3;
+  padding: 20px;
+}
+
+.sidebar a {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: black;
+  border: 1px solid transparent;
+  padding: 5px;
+}
+
+.sidebar a.active {
+  border: 1px solid black;
+}
+
+.page-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #e0e0e0;
+}
