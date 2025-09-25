@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "main": "server.ts",
   "scripts": {
-  "build": "tsc",
-  "prestart": "npm run build",
-  "start": "node dist/server.js",
-  "dev": "ts-node server.ts",
-  "test": "echo \"Error: no test specified\" && exit 1"
-},
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "ts-node server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "author": "kv",
   "license": "ISC",
   "description": "",
