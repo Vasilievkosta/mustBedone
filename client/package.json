@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -p tsconfig.node.json && vite build",
+    "build": "vite build",
     "lint": "eslint .",
-    "preview": "node dist/preview.js"
+    "preview": "vite preview"
   },
   "engines": {
     "node": ">=22.12.0"
