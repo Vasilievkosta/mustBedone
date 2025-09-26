@@ -4,7 +4,7 @@ export const Products = () => {
   const [products, setProducts] = useState([])
 
   useEffect(() => {
-    fetch("http://localhost:8080/products")
+    fetch(`${import.meta.env.VITE_API_URL}/products`)
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((err) => console.error("Ошибка загрузки:", err))

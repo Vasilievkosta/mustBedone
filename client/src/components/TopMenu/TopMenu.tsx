@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react"
+import { useLayoutEffect, useState } from "react"
 import { socket } from "../../utils/socket"
 
 export const TopMenu = () => {
   const [clientCount, setClientCount] = useState(0)
-
   const date = new Date().toLocaleDateString()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     socket.on("clientCount", setClientCount)
 
     return () => {
