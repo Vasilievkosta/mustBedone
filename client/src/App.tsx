@@ -12,8 +12,10 @@ function App() {
         <NavigationMenu />
         <div className="page-content">
           <Routes>
+            <Route path="/" element={<h2>Home</h2>} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/products" element={<Products />} />
+            <Route path="*" element={<h2>NotFound 404</h2>} />
           </Routes>
         </div>
       </div>

@@ -20,6 +20,8 @@ app.get("/products", (req, res) => {
   res.json([
     { id: 1, name: 'Монитор LG 24"', stock: 100 },
     { id: 2, name: "Клавиатура Logitech", stock: 50 },
+    { id: 3, name: "Мышь Razer DeathAdder V2", stock: 75 },
+    { id: 4, name: "Наушники HyperX Cloud II", stock: 40 },
   ])
 })
 

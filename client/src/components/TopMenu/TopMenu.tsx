@@ -1,11 +1,12 @@
-import { useLayoutEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { socket } from "../../utils/socket"
+import { NavLink } from "react-router-dom"
 
 export const TopMenu = () => {
   const [clientCount, setClientCount] = useState(0)
   const date = new Date().toLocaleDateString()
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     socket.on("clientCount", setClientCount)
 
     return () => {
@@ -15,9 +16,12 @@ export const TopMenu = () => {
 
   return (
     <header>
-      <div style={{ marginLeft: "auto" }}>
+      <NavLink to="/" className="logo">
+        <p>Tinovary</p>
+      </NavLink>
+      <p>
         <span>{date}</span> | <span>Сессий: {clientCount}</span>
-      </div>
+      </p>
     </header>
   )
 }
