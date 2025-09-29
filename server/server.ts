@@ -1,4 +1,5 @@
 import express from "express"
+const db = require("./db")
 import http from "http"
 import { Server } from "socket.io"
 import cors from "cors"
@@ -16,13 +17,49 @@ const io = new Server(server, {
 
 app.use(cors())
 
-app.get("/products", (req, res) => {
-  res.json([
-    { id: 1, name: 'Монитор LG 24"', stock: 100 },
-    { id: 2, name: "Клавиатура Logitech", stock: 50 },
-    { id: 3, name: "Мышь Razer DeathAdder V2", stock: 75 },
-    { id: 4, name: "Наушники HyperX Cloud II", stock: 40 },
-  ])
+// Эндпоинт для получения списка товаров
+app.get("/products", async (req, res) => {
+  try {
+    const result = await db.query("SELECT id, name, price FROM products ORDER BY id")
+
+    // Отключаем кэширование
+    // res.setHeader("Cache-Control", "no-store")
+
+    res.json(result.rows)
+  } catch (err) {
+    console.error("Ошибка запроса:", err)
+    res.status(500).send("Ошибка сервера")
+  }
+})
+
+app.get("/api/orders", async (req, res) => {
+  try {
+    const result = await db.query("SELECT id, title, created_at FROM orders ORDER BY created_at DESC")
+
+    res.json(result.rows)
+  } catch (err) {
+    console.error("Ошибка при получении заказов:", err)
+    res.status(500).json({ error: "Ошибка сервера" })
+  }
+})
+
+app.get("/api/orders/:id/products", async (req, res) => {
+  const orderId = parseInt(req.params.id)
+  if (isNaN(orderId)) return res.status(400).json({ error: "Неверный ID заказа" })
+
+  try {
+    const result = await db.query(
+      `SELECT id, name, price, condition, status, inventory_code, created_at, updated_at, user_name, order_id
+       FROM products
+       WHERE order_id = $1
+       ORDER BY inventory_code`,
+      [orderId]
+    )
+    res.json(result.rows)
+  } catch (err) {
+    console.error("Ошибка при получении товаров:", err)
+    res.status(500).json({ error: "Ошибка сервера" })
+  }
 })
 
 // Socket.IO

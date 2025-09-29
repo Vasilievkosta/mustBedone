@@ -16,7 +16,7 @@ export const Products = () => {
       <ul>
         {products.map((p: any) => (
           <li key={p.id}>
-            {p.name} — Остаток: {p.stock}
+            {p.name} — Price: {p.price}
           </li>
         ))}
       </ul>

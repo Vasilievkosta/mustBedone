@@ -1,53 +1,86 @@
-import { useState } from "react"
-import { ordersData } from "./ordersData"
+import { useEffect, useState } from "react"
+
+export type Product = {
+  id: number
+  name: string
+  price: number
+  condition: string
+  status: string
+  inventory_code: string
+  created_at: string // ISO date string
+  updated_at: string // ISO date string
+  user_name: string | null
+  order_id: number
+}
+
+export type Order = {
+  id: number
+  title: string
+  created_at: string // ISO date string
+}
 
 export const Orders = () => {
+  const [orders, setOrders] = useState<Order[]>([])
   const [activeOrderId, setActiveOrderId] = useState<number | null>(null)
+  const [products, setProducts] = useState<Product[]>([])
 
-  const activeOrder = ordersData.find((order) => order.id === activeOrderId)
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/orders`)
+      .then((res) => res.json())
+      .then((data) => setOrders(data))
+  }, [])
+
+  useEffect(() => {
+    if (activeOrderId !== null) {
+      fetch(`${import.meta.env.VITE_API_URL}/api/orders/${activeOrderId}/products`)
+        .then((res) => res.json())
+        .then((data) => setProducts(data))
+    }
+  }, [activeOrderId])
+
+  const activeOrder = orders.find((order) => order.id === activeOrderId)
 
   return (
     <>
       <h2>Orders</h2>
       <div className="orders-page">
         <div className="orders-list">
-          {ordersData.map((order) => (
+          {orders.map((order) => (
             <div
               key={order.id}
               className={`order-item ${order.id === activeOrderId ? "active" : ""}`}
               onClick={() => setActiveOrderId(order.id)}
             >
-              <div>Приход {order.date}</div>
-              <div>{order.products.length} товаров</div>
+              <div>{order.title}</div>
             </div>
           ))}
         </div>
 
         <div className="products-wrapper">
-          <h3>Длинное предлинное предлиннючее название</h3>
           {activeOrder ? (
-            <table className="products-table">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {activeOrder.products.map((product, index) => (
-                  <tr key={index}>
-                    <td>{product.name}</td>
-                    <td>{product.qty}</td>
-                    <td>{product.available ? "Свободен" : "Занят"}</td>
-                    <td>
-                      <button className="delete-btn">🗑️</button>
-                    </td>
+            <>
+              <h3>{activeOrder.title}</h3>
+              <table className="products-table">
+                <thead>
+                  <tr>
+                    <th>Название</th>
+                    <th>Инв. номер</th>
+                    <th>Статус</th>
+                    <th>Ответственный</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {products.map((product) => (
+                    <tr key={product.id}>
+                      <td>{product.name}</td>
+                      <td>{product.inventory_code}</td>
+                      <td>{product.status}</td>
+                      <td>{product.user_name || "—"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </>
           ) : (
             <div>Выберите заказ слева</div>
           )}
