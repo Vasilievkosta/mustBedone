@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom"
 import { TopMenu } from "./components/TopMenu/TopMenu"
 import { NavigationMenu } from "./components/NavigationMenu/NavigationMenu"
-import { Orders } from "./views/Orders/Orders"
-import { Products } from "./views/Products/Products"
+import { Orders } from "./pages/Orders/Orders"
+import { Products } from "./pages/Products/Products"
 
 function App() {
   return (
