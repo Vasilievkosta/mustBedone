@@ -1,14 +1,11 @@
-import { useEffect, useState } from "react"
+import { useGetProductsQuery } from "../../services/api/api"
 
 export const Products = () => {
-  const [products, setProducts] = useState([])
+  const { data: products, isLoading, error } = useGetProductsQuery()
 
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/products`)
-      .then((res) => res.json())
-      .then((data) => setProducts(data))
-      .catch((err) => console.error("Ошибка загрузки:", err))
-  }, [])
+  if (isLoading) return <div>Загрузка...</div>
+  if (error) return <div>Ошибка загрузки</div>
+  if (!products) return <div>Нет данных</div>
 
   return (
     <div>

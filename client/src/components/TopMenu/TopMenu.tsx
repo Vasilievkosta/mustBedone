@@ -18,14 +18,13 @@ export const TopMenu = () => {
   return (
     <header>
       <NavLink to="/" className="logo">
-        <p>Tinovary</p>
+        <p> ⚜️ Inventory</p>
       </NavLink>
-      <p style={{ display: "flex" }}>
-        <p>
-          <TimePanel />
-        </p>
-        <p> Сессий: {clientCount}</p>
-      </p>
+
+      <div className="inform">
+        <TimePanel />
+        <p>Сессий: {clientCount}</p>
+      </div>
     </header>
   )
 }

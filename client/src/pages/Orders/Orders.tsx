@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react"
-import { useGetOrdersQuery, useGetProductsQuery } from "../../features/api/api"
+import { useState } from "react"
+import { useGetOrderProductsQuery, useGetOrdersQuery } from "../../services/api/api"
+import { skipToken } from "@reduxjs/toolkit/query/react"
 
 export type Product = {
   id: number
@@ -21,30 +22,15 @@ export type Order = {
 }
 
 export const Orders = () => {
-  // const [orders, setOrders] = useState<Order[]>([])
   const [activeOrderId, setActiveOrderId] = useState<number | null>(null)
-  // const [products, setProducts] = useState<Product[]>([])
 
   const { data: orders, isLoading, error } = useGetOrdersQuery()
-  const { data: products } = useGetProductsQuery()
+
+  const { data: products } = useGetOrderProductsQuery(activeOrderId ?? skipToken)
 
   if (isLoading) return <div>Загрузка...</div>
   if (error) return <div>Ошибка загрузки</div>
   if (!orders) return <div>Нет данных</div>
-
-  // useEffect(() => {
-  //   fetch(`${import.meta.env.VITE_API_URL}/api/orders`)
-  //     .then((res) => res.json())
-  //     .then((data) => setOrders(data))
-  // }, [])
-
-  // useEffect(() => {
-  //   if (activeOrderId !== null) {
-  //     fetch(`${import.meta.env.VITE_API_URL}/api/orders/${activeOrderId}/products`)
-  //       .then((res) => res.json())
-  //       .then((data) => setProducts(data))
-  //   }
-  // }, [activeOrderId])
 
   const activeOrder = orders?.find((order) => order.id === activeOrderId)
 

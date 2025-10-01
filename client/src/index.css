@@ -18,7 +18,7 @@ header {
   padding: 10px 20px;
   display: flex;
   align-items: center;
-  justify-content: "space-between";
+  justify-content: space-between;
 }
 
 .logo {
@@ -34,10 +34,43 @@ header {
   }
 }
 
+.inform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
 .clock {
-  font-size: 16px;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
   margin-right: 20px;
+}
+
+.date-block {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.weekday {
+  font-size: 16px;
+}
+
+.date {
+  font-size: 14px;
+  color: #555;
+}
+
+.time-block {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.clock-icon {
+  font-size: 18px;
 }
 
 .sidebar {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 export const TimePanel = () => {
-  const [currentTime, setCurrentTime] = useState<string>(getFormattedTime())
+  const [currentTime, setCurrentTime] = useState(() => getFormattedTime())
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -11,18 +11,37 @@ export const TimePanel = () => {
     return () => clearInterval(timer)
   }, [])
 
-  function getFormattedTime(): string {
+  function getFormattedTime() {
     const now = new Date()
-    return now.toLocaleString("ru-RU", {
-      weekday: "short",
+
+    const weekday = now.toLocaleDateString("ru-RU", { weekday: "long" }) // Вторник
+    const date = now.toLocaleDateString("ru-RU", {
       day: "2-digit",
-      month: "long",
+      month: "short",
       year: "numeric",
+    }) // 06 апр. 2025
+
+    const time = now.toLocaleTimeString("ru-RU", {
       hour: "2-digit",
       minute: "2-digit",
       second: "2-digit",
-    })
+    }) // 13:29:22
+
+    return { weekday, date, time }
   }
 
-  return <div className="clock">{currentTime}</div>
+  const { weekday, date, time } = currentTime
+
+  return (
+    <div className="clock">
+      <div className="date-block">
+        <div className="weekday">{weekday}</div>
+        <div className="date">{date}</div>
+      </div>
+      <div className="time-block">
+        <span className="clock-icon">🕒</span>
+        <span className="time">{time}</span>
+      </div>
+    </div>
+  )
 }
