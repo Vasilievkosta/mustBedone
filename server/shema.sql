@@ -54,4 +54,5 @@ SELECT COUNT(*) FROM orders;
 
 -- вывести первые три строки
 SELECT * FROM products LIMIT 3;
-SELECT * FROM orders LIMIT 3
+SELECT * FROM orders LIMIT 3;
+
