@@ -47,12 +47,3 @@ INSERT INTO products (id, name, price, condition, status, inventory_code, create
 (17, 'GigabyteTechnology X58-USB3 Compact', 1500.00, 'новый', 'свободен', 'INV-018', '2025-09-15', '2025-09-15', 'Петренко Андрей', 4),
 (18, 'GigabyteTechnology X58-USB3 Compact', 1500.00, 'новый', 'свободен', 'INV-019', '2025-09-15', '2025-09-15', '', 4),
 (19, 'GigabyteTechnology X58-USB3 Eco', 1600.00, 'новый', 'свободен', 'INV-020', '2025-09-15', '2025-09-15', 'Мельник Наталья', 4);
-
--- проверка что таблицы не пустые
-SELECT COUNT(*) FROM products;
-SELECT COUNT(*) FROM orders;
-
--- вывести первые три строки
-SELECT * FROM products LIMIT 3;
-SELECT * FROM orders LIMIT 3;
-

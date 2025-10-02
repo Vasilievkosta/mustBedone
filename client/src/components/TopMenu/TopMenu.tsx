@@ -16,14 +16,14 @@ export const TopMenu = () => {
   }, [])
 
   return (
-    <header>
-      <NavLink to="/" className="logo">
-        <p> ⚜️ Inventory</p>
+    <header className="header">
+      <NavLink to="/" className="header__logo">
+        <p className="header__text"> ⚜️ Inventory</p>
       </NavLink>
 
-      <div className="inform">
+      <div className="header__inform">
         <TimePanel />
-        <p>Сессий: {clientCount}</p>
+        <p className="header__count">Сессий: {clientCount}</p>
       </div>
     </header>
   )

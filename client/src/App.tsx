@@ -6,11 +6,11 @@ import { Products } from "./pages/Products/Products"
 
 function App() {
   return (
-    <div className="app-container">
+    <div className="app">
       <TopMenu />
-      <div className="main-layout">
+      <div className="main">
         <NavigationMenu />
-        <div className="page-content">
+        <div className="content">
           <Routes>
             <Route path="/" element={<h2>Home</h2>} />
             <Route path="/orders" element={<Orders />} />

@@ -2,75 +2,75 @@ body {
   font-family: Arial, sans-serif;
 }
 
-.app-container {
+.app {
   display: flex;
   flex-direction: column;
   height: calc(100vh - 40px);
 }
 
-.main-layout {
+.main {
   display: flex;
   flex: 1;
 }
 
-header {
+.header {
   background-color: #f5f5dc;
   padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
 
-.logo {
-  margin-right: auto;
-  font-size: 18px;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: none;
-  transition: color 0.3s;
+  .header__logo {
+    margin-right: auto;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s;
 
-  &:hover {
-    color: green;
+    &:hover {
+      color: green;
+    }
   }
-}
 
-.inform {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+  .header__inform {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
 }
 
 .clock {
   display: flex;
   align-items: center;
   margin-right: 20px;
-}
 
-.date-block {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
+  .clock__date {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
 
-.weekday {
-  font-size: 16px;
-}
+    .clock__weekday {
+      font-size: 16px;
+    }
 
-.date {
-  font-size: 14px;
-  color: #555;
-}
+    .dclock__day {
+      font-size: 14px;
+      color: #555;
+    }
+  }
 
-.time-block {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 16px;
-}
+  .clock__times {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
 
-.clock-icon {
-  font-size: 18px;
+    .clock-icon {
+      font-size: 18px;
+    }
+  }
 }
 
 .sidebar {
@@ -92,7 +92,7 @@ header {
   border: 1px solid black;
 }
 
-.page-content {
+.content {
   flex: 1;
   padding: 20px;
   background-color: #e0e0e0;

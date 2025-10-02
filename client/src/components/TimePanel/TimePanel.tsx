@@ -34,13 +34,13 @@ export const TimePanel = () => {
 
   return (
     <div className="clock">
-      <div className="date-block">
-        <div className="weekday">{weekday}</div>
-        <div className="date">{date}</div>
+      <div className="clock__date">
+        <div className="clock__weekday">{weekday}</div>
+        <div className="clock__day">{date}</div>
       </div>
-      <div className="time-block">
+      <div className="clock__times">
         <span className="clock-icon">🕒</span>
-        <span className="time">{time}</span>
+        <span className="clock__time">{time}</span>
       </div>
     </div>
   )

@@ -1,0 +1,27 @@
+services:
+  server:
+    build: ./server
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=root
+      - DB_NAME=inventory
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: inventory
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./server/shema.sql:/docker-entrypoint-initdb.d/shema.sql
+    ports:
+      - "5432:5432"
+
+volumes:
+  pgdata:
