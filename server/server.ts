@@ -20,7 +20,14 @@ app.use(cors())
 // Эндпоинт для получения списка товаров
 app.get("/products", async (req, res) => {
   try {
-    const result = await db.query("SELECT id, name, price FROM products ORDER BY id")
+    const result = await db.query(`
+  SELECT 
+    p.*, 
+    o.title AS order_title
+  FROM products p
+  LEFT JOIN orders o ON p.order_id = o.id
+  ORDER BY p.id 
+`)
 
     // Отключаем кэширование
     // res.setHeader("Cache-Control", "no-store")
