@@ -7,8 +7,6 @@ export const ProductsPage = () => {
   if (error) return <div>Ошибка загрузки</div>
   if (!products) return <div>Нет данных</div>
 
-  console.log(products)
-
   return (
     <section className="products-page">
       <header className="products-page__header">
@@ -29,6 +27,7 @@ export const ProductsPage = () => {
               <span className="date">{p.price}</span>
               <span className="time">{p.condition}</span>
               <span className="user">{p.inventory_code}</span>
+              <span className="user">{p.category}</span>
             </div>
           </li>
         ))}

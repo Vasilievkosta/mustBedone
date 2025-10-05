@@ -8,7 +8,7 @@ export const Orders = () => {
 
   return (
     <>
-      <h2>Orders</h2>
+      <h2>Orders test</h2>
       <div className="orders-page">
         <div className="orders-list">
           {ordersData.map((order) => (
