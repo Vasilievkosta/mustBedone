@@ -1,6 +1,6 @@
 import { useGetProductsQuery } from "../../services/api/api"
 
-export const ProductsPage = () => {
+export const Products = () => {
   const { data: products, isLoading, error } = useGetProductsQuery()
 
   if (isLoading) return <div>Загрузка...</div>

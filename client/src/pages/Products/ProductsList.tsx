@@ -9,7 +9,7 @@ type Props = {
   onClose: () => void
 }
 
-const Products: React.FC<Props> = ({ orderId, onClose }) => {
+export const ProductsList: React.FC<Props> = ({ orderId, onClose }) => {
   const { data: products, isLoading, error } = useGetOrderProductsQuery(orderId ?? skipToken)
 
   useEffect(() => {
@@ -57,5 +57,3 @@ const Products: React.FC<Props> = ({ orderId, onClose }) => {
     </section>
   )
 }
-
-export default Products
