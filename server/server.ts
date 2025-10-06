@@ -18,7 +18,7 @@ const io = new Server(server, {
 app.use(cors())
 
 // Эндпоинт для получения списка товаров
-app.get("/products", async (req, res) => {
+app.get("/api/products", async (req, res) => {
   try {
     const result = await db.query(`
   SELECT 
@@ -41,7 +41,19 @@ app.get("/products", async (req, res) => {
 
 app.get("/api/orders", async (req, res) => {
   try {
-    const result = await db.query("SELECT id, title, created_at FROM orders ORDER BY created_at DESC")
+    // const result = await db.query("SELECT id, title, created_at FROM orders ORDER BY created_at DESC")
+	
+	const result = await db.query(`SELECT 
+  o.id,
+  o.title,
+  o.created_at,
+  COUNT(p.id) AS products_count,   -- количество товаров в заказе
+  SUM(p.price) AS total_sum        -- сумма цен всех товаров
+FROM orders o
+JOIN products p ON p.order_id = o.id
+GROUP BY o.id, o.title, o.created_at
+ORDER BY o.id
+`)
 
     res.json(result.rows)
   } catch (err) {
@@ -56,7 +68,7 @@ app.get("/api/orders/:id/products", async (req, res) => {
 
   try {
     const result = await db.query(
-      `SELECT id, name, price, condition, status, inventory_code, created_at, updated_at, user_name, order_id
+      `SELECT id, name, price, category, condition, status, inventory_code, created_at, updated_at, user_name, order_id
        FROM products
        WHERE order_id = $1
        ORDER BY inventory_code`,

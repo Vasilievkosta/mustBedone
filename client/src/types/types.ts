@@ -15,6 +15,8 @@ export type Product = {
 
 export type Order = {
   id: number
+  products_count: string
   title: string
   created_at: string
+  total_sum: string
 }

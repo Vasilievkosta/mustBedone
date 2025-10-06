@@ -6,7 +6,7 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_URL }),
   endpoints: (builder) => ({
     getOrders: builder.query<Order[], void>({ query: () => "/api/orders" }),
-    getProducts: builder.query<Product[], void>({ query: () => "/products" }),
+    getProducts: builder.query<Product[], void>({ query: () => "/api/products" }),
     getOrderProducts: builder.query<Product[], number | null>({
       query: (id) => `/api/orders/${id}/products`,
     }),

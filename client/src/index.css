@@ -507,8 +507,10 @@ button {
   flex-shrink: 0;
 }
 .product__meta {
+  display: flex;
   flex: 1;
   min-width: 0;
+  align-items: center;
 }
 .product__name {
   font-weight: 600;

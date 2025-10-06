@@ -35,14 +35,14 @@ const OrderItem: React.FC<Props> = ({ order, onOpen }) => {
         <div className="orders__info">
           <div className="orders__meta">
             <div className="orders__name cell cell--name text-truncate">{order.title}</div>
-            <span className="orders__positions cell cell--price text-truncate">{23} продукта</span>
+            <span className="orders__positions cell cell--price text-truncate">{order.products_count} продукта</span>
             <div className="cell cell--dates text-truncate">
               <p className="cell__dates-small">{formatDate(order.created_at, false, false)}</p>
               <div> {formatDate(order.created_at, true)}</div>
             </div>
             <div className="cell cell--price text-truncate">
-              <p className="cell__price-small">{Math.trunc((order.id * 100) / exchangeRate)} $</p>
-              {order.id * 100} <span className="cell__price-small">UAH</span>
+              <p className="cell__price-small">{Math.trunc(+order.total_sum / exchangeRate)} $</p>
+              {order.total_sum} <span className="cell__price-small">UAH</span>
             </div>
           </div>
         </div>
@@ -54,9 +54,14 @@ const OrderItem: React.FC<Props> = ({ order, onOpen }) => {
       </div>
 
       <div className="orders__row orders__row--collapsed" aria-hidden={!isActive}>
-        <div className="orders__summary">{order.title} </div>
-        <div className="orders__date-short">{order.created_at}</div>
-        <div className="orders__summary">➡️</div>
+        <div className="orders__summary">
+          {order.products_count}
+          <p>продукта</p>
+        </div>
+        <div className="cell cell--dates text-truncate">
+          <p className="cell__dates-small">{formatDate(order.created_at, false, false)}</p>
+          <div> {formatDate(order.created_at, true)}</div>
+        </div>
       </div>
     </li>
   )
