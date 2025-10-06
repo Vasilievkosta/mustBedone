@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { useGetProductsQuery } from "../../services/api/api"
 import { formatDate } from "../../utils/formarDate"
-import { Modal } from "../../components/Modal/modal"
+import { Modal } from '../../components/Modal/Modal'
+
 
 export const Products = () => {
   const { data: products, isLoading, error } = useGetProductsQuery()
