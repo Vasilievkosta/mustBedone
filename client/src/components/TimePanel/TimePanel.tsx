@@ -14,7 +14,7 @@ export const TimePanel = () => {
   function getFormattedTime() {
     const now = new Date()
 
-    const weekday = now.toLocaleDateString("en", { weekday: "long" }) // Вторник
+    const weekday = now.toLocaleDateString("ru-Ru", { weekday: "long" }) // Вторник
     const date = now.toLocaleDateString("ru-RU", {
       day: "2-digit",
       month: "short",

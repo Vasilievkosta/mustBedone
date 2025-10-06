@@ -1,5 +1,5 @@
 import { useGetOrdersQuery } from "../../services/api/api"
-import OrderItem from "./OrdersItem"
+import OrdersItem from "./OrdersItem"
 
 type Props = {
   isCollapsed: boolean
@@ -22,7 +22,7 @@ export const OrdersList: React.FC<Props> = ({ isCollapsed, onOpen }) => {
 
       <ul className="orders__list" id="ordersList">
         {orders?.map((o) => (
-          <OrderItem key={o.id} order={o} onOpen={onOpen} />
+          <OrdersItem key={o.id} order={o} onOpen={onOpen} />
         ))}
       </ul>
     </section>

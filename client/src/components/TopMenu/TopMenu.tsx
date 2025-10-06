@@ -14,20 +14,9 @@ export const TopMenu = () => {
   }, [])
 
   return (
-    // <header className="header">
-    //   <NavLink to="/" className="header__logo">
-    //     <p className="header__text"> ⚜️ Inventory</p>
-    //   </NavLink>
-
-    //   <div className="header__inform">
-    //     <TimePanel />
-    //     <p className="header__count">Сессий: {clientCount}</p>
-    //   </div>
-    // </header>
     <header className="header" role="banner">
       <div className="header__left">
         <div className="logo header__logo">
-          {/* <div className="logo__img" aria-hidden="true" /> */}
           <span className="logo__text"> ⚜️ INVENTORY</span>
         </div>
       </div>
@@ -40,8 +29,6 @@ export const TopMenu = () => {
 
       <div className="header__right">
         <div className="datetime header__datetime">
-          {/* <div className="datetime__date">12 мая, 2017</div>
-          <div className="datetime__time">07:20</div> */}
           <TimePanel />
         </div>
         <p className="datetime__count">Сессий: {clientCount}</p>

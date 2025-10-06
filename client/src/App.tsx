@@ -11,7 +11,7 @@ function App() {
     <div className="page">
       <TopMenu />
       <div className="page__body">
-        <aside className="sidebar">
+        <aside className="sidebar ">
           <NavigationMenu />
         </aside>
 

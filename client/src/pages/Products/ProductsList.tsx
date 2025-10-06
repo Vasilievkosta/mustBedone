@@ -14,7 +14,7 @@ export const ProductsList: React.FC<Props> = ({ orderId, onClose }) => {
 
   useEffect(() => {
     if (orderId) {
-      const el = document.getElementById("products")
+      const el = document.getElementById("products-list")
       el?.focus()
     }
   }, [orderId])
@@ -23,12 +23,12 @@ export const ProductsList: React.FC<Props> = ({ orderId, onClose }) => {
 
   return (
     <section
-      id="products"
-      className={`products ${orderId ? "products--open" : "products--hidden"}`}
+      id="products-list"
+      className={`products-list ${orderId ? "products-list--open" : "products-list--hidden"}`}
       aria-hidden={!orderId}
     >
       <button
-        className="products__close"
+        className="products-list__close"
         aria-label="Закрыть панель продуктов"
         onClick={(e) => {
           e.stopPropagation()
@@ -38,20 +38,20 @@ export const ProductsList: React.FC<Props> = ({ orderId, onClose }) => {
         ✕
       </button>
 
-      <header className="products__header">
-        <h3 className="products__title">Список продуктов</h3>
-        {isLoading && <span className="products__loading">Загрузка…</span>}
+      <header className="products-list__header">
+        <h3 className="products-list__title">Список продуктов</h3>
+        {isLoading && <span className="products-list__loading">Загрузка…</span>}
       </header>
 
-      {error && <p className="products__error">Ошибка загрузки</p>}
+      {error && <p className="products-list__error">Ошибка загрузки</p>}
 
-      <ul className="products__list" id="productsList">
+      <ul className="products-list__list" id="productsList">
         {isLoading ? (
           <p>Loading... </p>
         ) : products && products.length > 0 ? (
           products.map((p, idx) => <ProductItem key={p.id} product={p} index={idx} />)
         ) : (
-          <li className="products__item products__item--visible">Нет продуктов</li>
+          <li className="products-list__item products-list__item--visible">Нет продуктов</li>
         )}
       </ul>
     </section>
