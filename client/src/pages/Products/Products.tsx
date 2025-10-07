@@ -4,6 +4,7 @@ import { formatDate } from "../../utils/formarDate"
 import { Modal } from "../../components/Modal/Modal"
 import { Loader } from "../../components/Loader/Loader"
 import type { Product } from "../../types/types"
+import { EXCHANGE_RATE } from "../../constants/currency"
 
 export const Products = () => {
   const { data: products, isLoading, error } = useGetProductsQuery()
@@ -22,8 +23,6 @@ export const Products = () => {
 
   const filteredProducts =
     category === "all" ? products : products.filter((p) => p.category.toLowerCase() === category.toLowerCase())
-
-  const exchangeRate = 40
 
   const handleClick = (data: Product) => {
     setModalData(data)
@@ -87,7 +86,7 @@ export const Products = () => {
                 </div>
                 <div className="cell cell--condition text-truncate">{p.condition}</div>
                 <div className="cell cell--price text-truncate">
-                  <p className="cell__price-small">{Math.trunc(p.price / exchangeRate)} $</p>
+                  <p className="cell__price-small">{Math.trunc(p.price / EXCHANGE_RATE)} $</p>
                   {p.price} <span className="cell__price-small">UAH</span>
                 </div>
                 <div className="cell cell--category text-truncate">{p.category}</div>

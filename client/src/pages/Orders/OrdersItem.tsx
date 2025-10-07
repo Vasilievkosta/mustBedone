@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import type { Order } from "../../types/types"
 import { formatDate } from "../../utils/formarDate"
 import { Modal } from "../../components/Modal/Modal"
+import { EXCHANGE_RATE } from "../../constants/currency"
 
 type Props = {
   order: Order
@@ -22,8 +23,6 @@ const OrderItem: React.FC<Props> = ({ order, onOpen }) => {
     setModalData(data)
     setModalActive(true)
   }
-
-  const exchangeRate = 40
 
   return (
     <>
@@ -62,7 +61,7 @@ const OrderItem: React.FC<Props> = ({ order, onOpen }) => {
                 <div> {formatDate(order.created_at, true)}</div>
               </div>
               <div className="cell cell--price text-truncate">
-                <p className="cell__price-small">{Math.trunc(+order.total_sum / exchangeRate)} $</p>
+                <p className="cell__price-small">{Math.trunc(+order.total_sum / EXCHANGE_RATE)} $</p>
                 {order.total_sum} <span className="cell__price-small">UAH</span>
               </div>
             </div>
