@@ -1,15 +1,22 @@
 import { useState } from "react"
 import { useGetProductsQuery } from "../../services/api/api"
 import { formatDate } from "../../utils/formarDate"
-import { Modal } from '../../components/Modal/Modal'
-
+import { Modal } from "../../components/Modal/Modal"
+import { Loader } from "../../components/Loader/Loader"
+import type { Product } from "../../types/types"
 
 export const Products = () => {
   const { data: products, isLoading, error } = useGetProductsQuery()
   const [category, setCategory] = useState("all")
   const [modalActive, setModalActive] = useState<boolean>(false)
+  const [modalData, setModalData] = useState<Product>()
 
-  if (isLoading) return <div>Загрузка...</div>
+  if (isLoading)
+    return (
+      <div className="loader">
+        <Loader />
+      </div>
+    )
   if (error) return <div>Ошибка загрузки</div>
   if (!products) return <div>Нет данных</div>
 
@@ -18,17 +25,37 @@ export const Products = () => {
 
   const exchangeRate = 40
 
-  const handleClick = () => {
+  const handleClick = (data: Product) => {
+    setModalData(data)
     setModalActive(true)
   }
 
   return (
     <>
       <Modal active={modalActive} setActive={setModalActive}>
-        <p>Delete </p>
-        <button className="auth__btn" onClick={() => setModalActive(false)}>
-          Yes
-        </button>
+        <div>
+          <p className="modal__title">Вы уверены, что хотите удалить именно этот товар?</p>
+
+          <div className="modal__wrap">
+            <div className="product__thumb" aria-hidden="true">
+              <p style={{ fontSize: "30px" }}>
+                {modalData?.category === "monitor" ? "📺" : modalData?.category === "keyboard" ? "⌨️" : "🖱️"}
+              </p>
+            </div>
+            <div className="modal__description text-truncate">
+              {modalData?.order_title}
+              <p className="modal__description--spec">{modalData?.inventory_code}</p>
+            </div>
+          </div>
+        </div>
+        <div className="modal__actions">
+          <button className="modal__btn" onClick={() => setModalActive(false)}>
+            ОТМЕНИТЬ
+          </button>
+          <button className="modal__btn" onClick={() => setModalActive(false)}>
+            УДАЛИТЬ
+          </button>
+        </div>
       </Modal>
       <section className="products-page">
         <header className="products-page__header">
@@ -71,7 +98,7 @@ export const Products = () => {
                   <div> {formatDate(p.created_at, true)}</div>
                 </div>
                 <div className="cell cell__btn">
-                  <button className="orders__corf" type="button" aria-label="Удалить" onClick={handleClick}>
+                  <button className="orders__corf" type="button" aria-label="Удалить" onClick={() => handleClick(p)}>
                     🗑️
                   </button>
                 </div>

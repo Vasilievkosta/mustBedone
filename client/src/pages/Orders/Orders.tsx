@@ -1,6 +1,6 @@
 import { useOrdersView } from "../../hooks/useOrdersView"
-import { OrdersList } from "./OrdersList"
 import { ProductsList } from "../Products/ProductsList"
+import { OrdersList } from "./OrdersList"
 
 export const Orders = () => {
   const { openedOrderId, openOrder, closeProducts } = useOrdersView()

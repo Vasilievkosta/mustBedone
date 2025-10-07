@@ -529,3 +529,7 @@ button {
   color: #059669;
   font-weight: 600;
 }
+
+.loader {
+  margin: auto;
+}

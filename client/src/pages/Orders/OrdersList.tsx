@@ -1,3 +1,4 @@
+import { Loader } from "../../components/Loader/Loader"
 import { useGetOrdersQuery } from "../../services/api/api"
 import OrdersItem from "./OrdersItem"
 
@@ -9,7 +10,12 @@ type Props = {
 export const OrdersList: React.FC<Props> = ({ isCollapsed, onOpen }) => {
   const { data: orders, isLoading, error } = useGetOrdersQuery()
 
-  if (isLoading) return <p>Загрузка...</p>
+  if (isLoading)
+    return (
+      <div className="loader">
+        <Loader />
+      </div>
+    )
   if (error) return <p>Ошибка загрузки</p>
 
   return (
