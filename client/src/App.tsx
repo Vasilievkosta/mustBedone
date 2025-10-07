@@ -1,11 +1,10 @@
-import { Routes, Route } from "react-router-dom"
-import { TopMenu } from "./components/TopMenu/TopMenu"
+import { Navigate, Route, Routes } from "react-router-dom"
 import { NavigationMenu } from "./components/NavigationMenu/NavigationMenu"
+import { TopMenu } from "./components/TopMenu/TopMenu"
 
 import { Products } from "./pages/Products/Products"
 
 import { Orders } from "./pages/Orders/Orders"
-import { Loader } from "./components/Loader/Loader"
 
 function App() {
   return (
@@ -18,10 +17,12 @@ function App() {
 
         <main className="content">
           <Routes>
-            <Route path="/" element={<div>Home</div>} />
+            <Route path="/" element={<Navigate to="/orders" />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/products" element={<Products />} />
-            <Route path="*" element={<h2>NotFound 404</h2>} />
+            <Route path="/users" element={<div>В разработке</div>} />
+            <Route path="/settings" element={<div>В разработке</div>} />
+            <Route path="*" element={<Navigate to="/products" />} />
           </Routes>
         </main>
       </div>

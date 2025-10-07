@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { socket } from "../../utils/socket"
 import { TimePanel } from "../TimePanel/TimePanel"
+import { Link } from "react-router-dom"
 
 export const TopMenu = () => {
   const [clientCount, setClientCount] = useState(0)
@@ -16,9 +17,9 @@ export const TopMenu = () => {
   return (
     <header className="header" role="banner">
       <div className="header__left">
-        <div className="logo header__logo">
+        <Link to="/orders" className="logo header__logo">
           <span className="logo__text"> ⚜️ INVENTORY</span>
-        </div>
+        </Link>
       </div>
 
       <div className="header__center">
