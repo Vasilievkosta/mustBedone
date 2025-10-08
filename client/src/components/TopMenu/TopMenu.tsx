@@ -6,11 +6,37 @@ import { Link } from "react-router-dom"
 export const TopMenu = () => {
   const [clientCount, setClientCount] = useState(0)
 
+  // useEffect(() => {
+  //   socket.on("clientCount", setClientCount)
+
+  //   return () => {
+  //     socket.off("clientCount", setClientCount)
+  //   }
+  // }, [])
+
   useEffect(() => {
-    socket.on("clientCount", setClientCount)
+    // явный обработчик (не передаём setClientCount напрямую — так понятнее для логов)
+    const onClientCount = (n: number) => {
+      console.log("got clientCount", n)
+      setClientCount(n)
+    }
+
+    // регистрируем обработчик
+    socket.on("clientCount", onClientCount)
+
+    // сразу запрашиваем актуальное значение (после регистрации обработчика,
+    // чтобы не пропустить ответ)
+    socket.emit("getClientCount")
+
+    // на переподключение тоже запросим свежий счёт (на случай, если сокет переподключился)
+    const onConnect = () => {
+      socket.emit("getClientCount")
+    }
+    socket.on("connect", onConnect)
 
     return () => {
-      socket.off("clientCount", setClientCount)
+      socket.off("clientCount", onClientCount)
+      socket.off("connect", onConnect)
     }
   }, [])
 

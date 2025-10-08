@@ -186,8 +186,8 @@ button {
 
 .content {
   display: flex;
-  align-items: center;
   justify-content: center;
+  flex-direction: row;
   flex: 1;
   padding: 5px;
   background-color: var(--bg);
@@ -204,7 +204,7 @@ button {
   overflow: auto;
 }
 .orders--expanded {
-  width: 100%;
+  width: 80%;
 }
 .orders--collapsed {
   width: 360px;

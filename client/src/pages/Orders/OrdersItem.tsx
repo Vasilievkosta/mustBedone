@@ -64,12 +64,17 @@ const OrderItem: React.FC<Props> = ({ order, onOpen }) => {
                 <p className="cell__price-small">{Math.trunc(+order.total_sum / EXCHANGE_RATE)} $</p>
                 {order.total_sum} <span className="cell__price-small">UAH</span>
               </div>
+              <div className="orders__actions">
+                <button
+                  className="orders__corf"
+                  type="button"
+                  aria-label="Удалить"
+                  onClick={() => handleOrderClick(order)}
+                >
+                  🗑️
+                </button>
+              </div>
             </div>
-          </div>
-          <div className="orders__actions">
-            <button className="orders__corf" type="button" aria-label="Удалить" onClick={() => handleOrderClick(order)}>
-              🗑️
-            </button>
           </div>
         </div>
         <div className="orders__row orders__row--collapsed" aria-hidden={!isActive}>

@@ -22,7 +22,7 @@ export const OrdersList: React.FC<Props> = ({ isCollapsed, onOpen }) => {
     <section className={`orders ${isCollapsed ? "orders--collapsed" : "orders--expanded"}`} id="orders">
       <header className="orders__header">
         <h2 className="orders__title">
-          Приходы <span className="orders__Count orders__count">/ {orders?.length}</span>
+          Приходы <span className="orders__count">/ {orders?.length}</span>
         </h2>
       </header>
 
