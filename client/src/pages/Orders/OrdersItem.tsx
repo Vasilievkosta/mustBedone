@@ -69,7 +69,10 @@ const OrderItem: React.FC<Props> = ({ order, onOpen }) => {
                   className="orders__corf"
                   type="button"
                   aria-label="Удалить"
-                  onClick={() => handleOrderClick(order)}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handleOrderClick(order)
+                  }}
                 >
                   🗑️
                 </button>

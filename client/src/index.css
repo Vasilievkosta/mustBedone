@@ -184,6 +184,23 @@ button {
   color: #fff;
 }
 
+.nav__lang {
+  display: flex;
+  margin: 20px;
+}
+.nav__langBtn {
+  margin: 5px;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.3s;
+}
+.nav__langBtn:hover {
+  margin: 5px;
+  border-bottom-color: #6b7280;
+}
+.nav__langBtn:focus {
+  background-color: #f5f7fa;
+}
+
 .content {
   display: flex;
   justify-content: center;
@@ -316,9 +333,14 @@ button {
   color: #fff;
   padding: 8px 10px;
   border-radius: 6px;
+  border: 1px solid transparent;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  transition: border-color 0.3s;
+}
+.orders__corf:hover {
+  border-color: #6b7280;
 }
 .orders__corf:active {
   transform: scale(0.98);

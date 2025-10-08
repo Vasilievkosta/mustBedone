@@ -1,0 +1,24 @@
+{
+  "common": {
+    "yes": "Yes",
+    "monitor": "Monitor",
+    "inventory": "Inventory number: {{code}}",
+    "search": "Search...",
+    "sessions": "Sessions",
+
+    "sidebar": {
+      "home": "Home",
+      "orders": "ORDERS",
+      "groups": "GROUPS",
+      "products": "PRODUCTS",
+      "users": "USERS",
+      "settings": "SETTINGS"
+    },
+    "forma": {
+      "signIn": "SIGN IN",
+      "signOut": "SING OUT",
+      "username": "Username",
+      "enterUsername": "Enter username"
+    }
+  }
+}

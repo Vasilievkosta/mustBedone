@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react"
 
+import { useTranslation } from "react-i18next"
+
 export const TimePanel = () => {
-  const [currentTime, setCurrentTime] = useState(() => getFormattedTime())
+  const { i18n } = useTranslation()
+  const [currentTime, setCurrentTime] = useState<{
+    weekday: string
+    date: string
+    time: string
+  }>(() => getFormattedTime())
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -13,8 +20,9 @@ export const TimePanel = () => {
 
   function getFormattedTime() {
     const now = new Date()
+    console.log(i18n.language)
 
-    const weekday = now.toLocaleDateString("ru-Ru", { weekday: "long" }) // Вторник
+    const weekday = now.toLocaleDateString(i18n.language, { weekday: "long" }) // Вторник
     const date = now.toLocaleDateString("ru-RU", {
       day: "2-digit",
       month: "short",

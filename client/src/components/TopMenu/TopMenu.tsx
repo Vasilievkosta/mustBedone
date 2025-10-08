@@ -2,33 +2,22 @@ import { useEffect, useState } from "react"
 import { socket } from "../../utils/socket"
 import { TimePanel } from "../TimePanel/TimePanel"
 import { Link } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 export const TopMenu = () => {
   const [clientCount, setClientCount] = useState(0)
-
-  // useEffect(() => {
-  //   socket.on("clientCount", setClientCount)
-
-  //   return () => {
-  //     socket.off("clientCount", setClientCount)
-  //   }
-  // }, [])
+  const { t } = useTranslation()
 
   useEffect(() => {
-    // явный обработчик (не передаём setClientCount напрямую — так понятнее для логов)
     const onClientCount = (n: number) => {
       console.log("got clientCount", n)
       setClientCount(n)
     }
 
-    // регистрируем обработчик
     socket.on("clientCount", onClientCount)
 
-    // сразу запрашиваем актуальное значение (после регистрации обработчика,
-    // чтобы не пропустить ответ)
     socket.emit("getClientCount")
 
-    // на переподключение тоже запросим свежий счёт (на случай, если сокет переподключился)
     const onConnect = () => {
       socket.emit("getClientCount")
     }
@@ -50,7 +39,7 @@ export const TopMenu = () => {
 
       <div className="header__center">
         <form className="search" onSubmit={(e) => e.preventDefault()}>
-          <input className="search__input" type="search" placeholder="Поиск..." />
+          <input className="search__input" type="search" placeholder={t("common.search")} />
         </form>
       </div>
 
@@ -58,7 +47,9 @@ export const TopMenu = () => {
         <div className="datetime header__datetime">
           <TimePanel />
         </div>
-        <p className="datetime__count">Сессий: {clientCount}</p>
+        <p className="datetime__count">
+          {t("common.sessions")}: {clientCount}
+        </p>
       </div>
     </header>
   )

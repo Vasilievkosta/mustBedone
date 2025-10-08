@@ -1,0 +1,24 @@
+{
+  "common": {
+    "yes": "Да",
+    "monitor": "Монитор",
+    "inventory": "Инвентарный номер: {{code}}",
+    "search": "Поиск...",
+    "sessions": "Сессий",
+
+    "sidebar": {
+      "home": "Главная",
+      "orders": "ПРИХОД",
+      "groups": "ГРУППЫ",
+      "products": "ПРОДУКТЫ",
+      "users": "ПОЛЬЗОВАТЕЛИ",
+      "settings": "НАСТРОЙКИ"
+    },
+    "forma": {
+      "signIn": "ВХОД",
+      "signOut": "ВЫХОД",
+      "username": "ЛОГИН",
+      "enterUsername": "ВВЕДИТЕ ИМЯ"
+    }
+  }
+}

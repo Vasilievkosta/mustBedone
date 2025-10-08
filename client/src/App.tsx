@@ -21,6 +21,7 @@ function App() {
           <Routes>
             <Route element={<ProtectedRoute />}>
               <Route path="/orders" element={<Orders />} />
+              <Route path="/groups" element={<div>В разработке</div>} />
               <Route path="/products" element={<Products />} />
               <Route path="/users" element={<div>В разработке</div>} />
               <Route path="/settings" element={<div>В разработке</div>} />

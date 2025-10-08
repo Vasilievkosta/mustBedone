@@ -20,7 +20,6 @@ export function LoginForm() {
   } = useForm<LoginFormValues>({ mode: "onSubmit" })
 
   const onSubmit = async (values: LoginFormValues) => {
-    console.log(values)
     try {
       const res = await login(values).unwrap()
 
