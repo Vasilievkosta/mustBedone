@@ -5,6 +5,7 @@ import { TopMenu } from "./components/TopMenu/TopMenu"
 import { Products } from "./pages/Products/Products"
 import { Orders } from "./pages/Orders/Orders"
 import { Groups } from "./pages/Groups/Groups"
+import { Users } from "./pages/Users/Users"
 
 import { LoginForm } from "./components/Auth/LoginForm"
 import { ProtectedRoute } from "./components/Auth/ProtectedRoute"
@@ -24,7 +25,7 @@ function App() {
               <Route path="/orders" element={<Orders />} />
               <Route path="/groups" element={<Groups />} />
               <Route path="/products" element={<Products />} />
-              <Route path="/users" element={<div>В разработке</div>} />
+              <Route path="/users" element={<Users />} />
               <Route path="/settings" element={<div>В разработке</div>} />
               <Route path="*" element={<Navigate to="/products" />} />
             </Route>
