@@ -8,7 +8,7 @@ export const login = async (req: Request, res: Response) => {
 
   //  ищем пользователя в БД
   if (username === "admin" && password === "123456") {
-    const token = jwt.sign({ username }, SECRET_KEY, { expiresIn: "1h" })
+    const token = jwt.sign({ username }, SECRET_KEY, { expiresIn: "8h" })
     return res.json({ token })
   }
 
