@@ -6,7 +6,7 @@ import { useGetOrdersQuery } from "../../services/api/api"
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
-export const OrderChart = () => {
+export default function OrderChart() {
   const { data: orders = [], isLoading } = useGetOrdersQuery()
 
   if (isLoading) return <p>Загрузка графика...</p>

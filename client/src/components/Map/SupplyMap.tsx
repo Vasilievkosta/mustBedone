@@ -21,7 +21,7 @@ const supplyCenters: { name: string; position: LatLngTuple }[] = [
   { name: "Львів", position: [49.84, 24.03] },
 ]
 
-export const SupplyMap = () => {
+export default function SupplyMap() {
   return (
     <div style={{ height: "500px", width: "100%", maxWidth: "900px", margin: "0 auto" }}>
       <MapContainer center={[49.0, 32.0]} zoom={6} style={{ height: "100%", width: "100%" }}>
