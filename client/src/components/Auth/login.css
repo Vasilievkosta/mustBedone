@@ -54,9 +54,33 @@
 
 .auth-form__error {
   display: block;
-  margin-top: 6px;
+
   font-size: 0.85rem;
   color: #ef4444;
+}
+.auth-form__error-container {
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-form__error--server {
+  height: 40px;
+
+  color: #d9534f;
+  font-size: 0.9rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(-4px);
+  animation: fadeIn 0.25s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .auth-form__submit {

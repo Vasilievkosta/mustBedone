@@ -2,7 +2,7 @@
   "common": {
     "yes": "Yes",
     "monitor": "Monitor",
-    "inventory": "Inventory number: {{code}}",
+    "inventory": "Inventory number",
     "search": "Search...",
     "sessions": "Sessions",
 
@@ -18,7 +18,14 @@
       "signIn": "SIGN IN",
       "signOut": "SING OUT",
       "username": "Username",
-      "enterUsername": "Enter username"
+      "enterUsername": "Enter username",
+      "usernameRequired": "Username is required",
+      "characters": "Minimum 3 characters",
+      "characters6": "Minimum 6 characters",
+      "password": "Password",
+      "enterPassword": "Enter password",
+      "passwordRequired": "Password is required",
+      "wrongCredentials": "Invalid username or password"
     }
   }
 }

@@ -2,7 +2,7 @@
   "common": {
     "yes": "Да",
     "monitor": "Монитор",
-    "inventory": "Инвентарный номер: {{code}}",
+    "inventory": "Инвентарный номер",
     "search": "Поиск...",
     "sessions": "Сессий",
 
@@ -18,7 +18,14 @@
       "signIn": "ВХОД",
       "signOut": "ВЫХОД",
       "username": "ЛОГИН",
-      "enterUsername": "ВВЕДИТЕ ИМЯ"
+      "enterUsername": "Введите логин",
+      "usernameRequired": "Логин обязателен",
+      "characters3": "Минимум 3 символа",
+      "characters6": "Минимум 6 символов",
+      "password": "Пароль",
+      "enterPassword": "Введите пароль",
+      "passwordRequired": "Пароль обязателен",
+      "wrongCredentials": "Неверный логин или пароль"
     }
   }
 }
